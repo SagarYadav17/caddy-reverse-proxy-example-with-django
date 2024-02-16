@@ -16,16 +16,15 @@ This repository demonstrates how to set up a Django project with Caddy as a reve
 3. Start the caddy container and servers
 
     ```bash
-    docker compose -f ./caddy/compose.yaml up -d --build
+    docker network create caddy_network && \
+    docker compose -f ./caddy/compose.yaml up -d --build && \
     docker compose -f ./backend/compose.yaml up -d --build
     ```
 
 4. Update the provided `Caddyfile`.
 
     ```text
-    {
-      email your-email@example.com
-    }
+    email your-email@example.com
 
     your-domain.com {
       reverse_proxy localhost:80
