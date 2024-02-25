@@ -1,8 +1,0 @@
-:80, :443 {
-	reverse_proxy wsgi_server:8000
-	@websockets {
-		header Connection *Upgrade*
-		header Upgrade websocket
-	}
-	reverse_proxy @websockets asgi_server:8001
-}
